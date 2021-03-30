@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import './Header.css';
 
 class Header extends Component {
   render() {
     return (
-      <header>
+      <header className="nav">
         <ul>
           <li>
             <a href="/">Movies</a>
