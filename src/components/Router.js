@@ -3,10 +3,13 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Home from '../routes/Home';
 import TV from '../routes/TV';
 import Search from '../routes/Search';
+import Header from './Header';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => (
   //  exact : path 가 정확히 일치하는 경우에 routing
   <Router>
+    <Header />
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/tv" component={TV} />

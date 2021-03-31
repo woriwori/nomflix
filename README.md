@@ -23,4 +23,5 @@
 
 - CSS
   - `*.module.css`로 사용하면 개발자도구로 봤을 때 클래스 이름 뒤에 random한 텍스트가 붙음
-  -
+    - `navList-blahblah..`
+  - `styled-components`를 사용하면 `sc-blahblah..`
