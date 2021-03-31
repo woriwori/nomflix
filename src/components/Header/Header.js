@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './Header.css';
+import styles from './Header.module.css';
 
 class Header extends Component {
   render() {
     return (
-      <header className="nav">
-        <ul>
+      <header>
+        <ul className={styles.navList}>
           <li>
             <a href="/">Movies</a>
           </li>
