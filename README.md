@@ -9,11 +9,20 @@
   - 영화, TV Show 검색
 - [ ] Detail
   - 영화, TV Show의 상세 정보
+  
+## API Verbs
+- [x] Now Playing (Movies)
+- [x] Upcoming (Movies)
+- [x] Airing Today (TV)
+- [x] Top Rated (TV)
+- [x] Popular (TV, Movies)
+- [x] TV Show Detail
+- [x] Movie Detail
+- [x] Search (TV, Movies)
 
 ## 강의 메모
 
 - React Router
-
   - React Native, DOM 에서도 사용 가능
   - Router, Route 생성
   - BrowserRouter vs HashRouter
@@ -22,7 +31,6 @@
     - 참고 링크 : https://happy-coding-day.tistory.com/128
 
 - CSS
-
   - `*.module.css`로 사용하면 개발자도구로 봤을 때 클래스 이름 뒤에 random한 텍스트가 붙음
     - `navList-blahblah..`
   - `styled-components`를 사용하면 `sc-blahblah..`
@@ -34,3 +42,12 @@
 
 - withRouter
   - `withRouter`로 감싸면 props에 router 관련 정보들이 넘어온다.
+
+- API 연동
+  - API 키 : fda3e97aacb5071d7149afd44d3d13d0
+    - https://www.themoviedb.org/settings/api  
+
+- axios
+  - `axios.create({}).get('tv/popular')`
+    - `/tv/popular` 처럼 하면 절대경로로 접근하는거고 그럴 경우 baseURL을 절대경로(`/tv/popular`)가 덮어씌운다. 
+    - 항상 상대경로(`tv/popular`)를 사용해야한다.
