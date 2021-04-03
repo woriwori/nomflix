@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Home from '../routes/Home';
 import TV from '../routes/TV';
 import Search from '../routes/Search';
+import Detail from '../routes/Detail';
 import Header from './Header';
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -14,6 +15,8 @@ export default () => (
       <Route path="/" exact component={Home} />
       <Route path="/tv" component={TV} />
       <Route path="/search" component={Search} />
+      <Route path="/movie/:id" component={Detail} />
+      <Route path="/show/:id" component={Detail} />
       <Redirect from="*" to="/" />
     </Switch>
   </Router>
