@@ -29,6 +29,7 @@
     - BrowserRouter : History API 사용
     - HashRouter : browser hash를 사용
     - 참고 링크 : https://happy-coding-day.tistory.com/128
+  - Route에 설정한 컴포넌트에서는 `this.props`로 `location`, `match` 등의 라우팅 정보에 접근할 수 있다.
 
 - CSS
   - `*.module.css`로 사용하면 개발자도구로 봤을 때 클래스 이름 뒤에 random한 텍스트가 붙음
