@@ -52,3 +52,9 @@
   - `axios.create({}).get('tv/popular')`
     - `/tv/popular` 처럼 하면 절대경로로 접근하는거고 그럴 경우 baseURL을 절대경로(`/tv/popular`)가 덮어씌운다. 
     - 항상 상대경로(`tv/popular`)를 사용해야한다.
+      (1) / (Homepage) https://api.coinpaprika.com/v1/tickers
+      (2) /exchanges https://api.coinpaprika.com/v1/exchanges
+      (3) /coins https://api.coinpaprika.com/v1/coins
+      Homepage: Show the name of the coin, the symbol and price.
+      Exchanges: Show the name of the exchange, description and website link.
+      Coins: List the coins and sort them by rank.
