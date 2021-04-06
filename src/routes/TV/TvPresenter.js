@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Section from '../../components/Section';
 import Loader from 'components/Loader';
+import Message from 'components/Message';
 
 const Container = styled.div`
   padding: 0 20px;
@@ -20,6 +21,7 @@ const TvPresenter = ({ topRated, popular, airingToday, error, loading }) => {
         <Section title="Airing Today">{airingToday.map((show) => show.name)}</Section>
       )}
       {popular && popular.length > 0 && <Section title="Popular Shows">{popular.map((show) => show.name)}</Section>}
+      {error && <Message color="#e74c3c" text={error} />}
     </Container>
   );
 };

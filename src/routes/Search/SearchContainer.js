@@ -48,7 +48,7 @@ export default class extends React.Component {
       });
     } catch {
       this.setState({
-        error: "Can't find moves information."
+        error: "Can't find results."
       });
     } finally {
       this.setState({
