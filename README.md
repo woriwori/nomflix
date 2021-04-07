@@ -1,13 +1,28 @@
 # Nomflix
 
-## Screens
+## Setup
 
-- [ ] Home
-- [ ] TV Shows
+```sh
+# install
+npm run i
+
+# test
+npm run test
+
+# build
+npm run build
+
+# development
+npm run start
+```
+
+## Screens
+- [x] Home
+- [x] TV Shows
   - 목록
-- [ ] Search
+- [x] Search
   - 영화, TV Show 검색
-- [ ] Detail
+- [x] Detail
   - 영화, TV Show의 상세 정보
   
 ## API Verbs
@@ -19,3 +34,6 @@
 - [x] TV Show Detail
 - [x] Movie Detail
 - [x] Search (TV, Movies)
+
+## Link
+- [초보를 위한 React JS (중급)](https://nomadcoders.co/react-for-beginners/lobby)
