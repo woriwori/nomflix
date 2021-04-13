@@ -42,7 +42,7 @@ const TabContent = styled.div`
 `;
 
 const Tabs = ({ items }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
 
   const activeItem = items[activeIndex];
   const ActiveComponent = activeItem.component;

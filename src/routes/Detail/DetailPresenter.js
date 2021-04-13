@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -9,6 +9,7 @@ import Tabs from 'components/Tabs';
 import Videos from 'components/Videos';
 import Reviews from 'components/Reviews';
 import Company from 'components/Company';
+import CreatedBy from 'components/CreatedBy';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -82,6 +83,23 @@ const DetailPresenter = ({ result, error, loading, isMovie }) => {
   //   { title: 'Videos', path: '/video', component: Videos, props: { isMovie: true, id: result.id } },
   //   { title: 'Reviews', path: '/reviews', component: Videos, props: { isMovie: true, id: result.id } }
   // ];
+
+  const getTabItems = useCallback((isMovie, result) => {
+    if (isMovie) {
+      return [
+        { title: 'Videos', component: Videos, props: { isMovie, id: result.id } },
+        { title: 'Reviews', component: Reviews, props: { isMovie, id: result.id } },
+        { title: 'Company', component: Company, props: { companies: result.production_companies } }
+      ];
+    } else {
+      return [
+        { title: 'Seasons', component: Company, props: { companies: result.seasons } },
+        { title: 'Created By', component: CreatedBy, props: { createdBy: result.created_by } },
+        { title: 'Company', component: Company, props: { companies: result.production_companies } }
+      ];
+    }
+  });
+
   return loading ? (
     <>
       <Helmet>
@@ -126,13 +144,7 @@ const DetailPresenter = ({ result, error, loading, isMovie }) => {
             <SLink to={`/collection/${result.id}`}> See Other Collection..</SLink>
           </div>
           <div style={{ height: '50%', marginLeft: '10px' }}>
-            <Tabs
-              items={[
-                { title: 'Videos', component: Videos, props: { isMovie, id: result.id } },
-                { title: 'Reviews', component: Reviews, props: { isMovie, id: result.id } },
-                { title: 'Company', component: Company, props: { companies: result.production_companies } }
-              ]}
-            />
+            <Tabs items={getTabItems(isMovie, result)} />
           </div>
         </Data>
       </Content>
