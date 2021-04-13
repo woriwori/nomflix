@@ -35,14 +35,15 @@ const SLink = styled(Link)`
 class Header extends Component {
   render() {
     const pathname = this.props.location.pathname;
+
     return (
       <SHeader>
         <List>
-          <Item current={pathname === '/'}>
+          <Item current={pathname === '/' || pathname.startsWith('/movie')}>
             <SLink to="/">Movies</SLink>
           </Item>
-          <Item current={pathname === '/tv'}>
-            <SLink to="/tv">TV</SLink>
+          <Item current={pathname === '/tv' || pathname.startsWith('/show')}>
+            <SLink to="../tv">TV</SLink>
           </Item>
           <Item current={pathname === '/search'}>
             <SLink to="/search">Search</SLink>
