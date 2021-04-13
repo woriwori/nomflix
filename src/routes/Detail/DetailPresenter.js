@@ -7,6 +7,7 @@ import Message from 'components/Message';
 import Tabs from 'components/Tabs';
 import Videos from 'components/Videos';
 import Reviews from 'components/Reviews';
+import Company from 'components/Company';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -120,8 +121,9 @@ const DetailPresenter = ({ result, error, loading }) => {
           <div style={{ height: '50%', marginLeft: '10px' }}>
             <Tabs
               items={[
-                { title: 'Videos', path: '/video', component: Videos, props: { isMovie: true, id: result.id } },
-                { title: 'Reviews', path: '/reviews', component: Reviews, props: { isMovie: true, id: result.id } }
+                { title: 'Videos', component: Videos, props: { isMovie: true, id: result.id } },
+                { title: 'Reviews', component: Reviews, props: { isMovie: true, id: result.id } },
+                { title: 'Company', component: Company, props: { companies: result.production_companies } }
               ]}
             />
           </div>

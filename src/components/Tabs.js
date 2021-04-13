@@ -31,6 +31,7 @@ const TabContent = styled.div`
   overflow-x: hidden;
   background-color: rgb(255, 255, 255, 0.1);
   border-radius: 5px;
+  border-top-left-radius: ${(props) => (props.activeIndex === 0 ? 0 : '5px')};
   &::-webkit-scrollbar {
     background-color: transparent;
   }
@@ -56,7 +57,7 @@ const Tabs = ({ items }) => {
           </Tab>
         ))}
       </STabs>
-      <TabContent>
+      <TabContent activeIndex={activeIndex}>
         <ActiveComponent {...activeProps} />
       </TabContent>
     </>

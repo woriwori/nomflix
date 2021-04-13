@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import YouTube from 'react-youtube';
 import styled from 'styled-components';
 import { moviesApi, tvApi } from 'api';
+import Loader from 'components/Loader';
 
 const Container = styled.div`
   height: 100%;
@@ -62,6 +62,7 @@ const Content = styled.div`
 
 const Reviews = ({ isMovie, id }) => {
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const avatarUrl = 'https://image.tmdb.org/t/p/w50_and_h50_face';
 
@@ -69,9 +70,10 @@ const Reviews = ({ isMovie, id }) => {
     try {
       const { data } = isMovie ? await moviesApi.movieReviews(id, page) : await tvApi.tvReviews(id, page);
       setReviews(data.results);
-      console.log(reviews);
-    } catch {
+    } catch (error) {
+      console.error(error);
     } finally {
+      setLoading(false);
     }
   }, [isMovie, id, page]);
 
@@ -85,7 +87,9 @@ const Reviews = ({ isMovie, id }) => {
     getReviews();
   }, [isMovie, id, getReviews]);
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <Container>
       {reviews.length &&
         reviews.map((review) => (
