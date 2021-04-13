@@ -70,19 +70,18 @@ const ImdbLink = styled.a`
   border-radius: 6px;
   color: #121212;
 `;
-const SLink = styled.a`
+const SLink = styled(Link)`
   text-decoration: underline;
   margin-top: 7px;
   display: block;
   color: rgb(27 162 204);
 `;
 
-const DetailPresenter = ({ result, error, loading }) => {
+const DetailPresenter = ({ result, error, loading, isMovie }) => {
   // const tabItems = [
   //   { title: 'Videos', path: '/video', component: Videos, props: { isMovie: true, id: result.id } },
   //   { title: 'Reviews', path: '/reviews', component: Videos, props: { isMovie: true, id: result.id } }
   // ];
-
   return loading ? (
     <>
       <Helmet>
@@ -91,7 +90,7 @@ const DetailPresenter = ({ result, error, loading }) => {
       <Loader />
     </>
   ) : error ? (
-    <Message />
+    <Message color="#e74c3c" text={error} />
   ) : (
     <Container>
       <Helmet>
@@ -124,13 +123,13 @@ const DetailPresenter = ({ result, error, loading }) => {
               </Item>
             </ItemContainer>
             <Overview>{result.overview}</Overview>
-            <SLink to={`/movie/${result.id}/collection`}> See Other Collection..</SLink>
+            <SLink to={`/collection/${result.id}`}> See Other Collection..</SLink>
           </div>
           <div style={{ height: '50%', marginLeft: '10px' }}>
             <Tabs
               items={[
-                { title: 'Videos', component: Videos, props: { isMovie: true, id: result.id } },
-                { title: 'Reviews', component: Reviews, props: { isMovie: true, id: result.id } },
+                { title: 'Videos', component: Videos, props: { isMovie, id: result.id } },
+                { title: 'Reviews', component: Reviews, props: { isMovie, id: result.id } },
                 { title: 'Company', component: Company, props: { companies: result.production_companies } }
               ]}
             />

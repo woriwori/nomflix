@@ -42,8 +42,8 @@ const Videos = ({ isMovie, id }) => {
   ) : (
     <Container>
       {videos.length &&
-        videos.map((video) => (
-          <YTContainer>
+        videos.map((video, index) => (
+          <YTContainer key={index}>
             <YouTube videoId={video.key} opts={ytOptions} />
           </YTContainer>
         ))}
