@@ -30,6 +30,7 @@ const TabContent = styled.div`
   overflow: scroll;
   overflow-x: hidden;
   background-color: rgb(255, 255, 255, 0.1);
+  border-radius: 5px;
   &::-webkit-scrollbar {
     background-color: transparent;
   }

@@ -27,7 +27,6 @@ const Videos = ({ isMovie, id }) => {
   }, [isMovie, id]);
 
   useEffect(() => {
-    console.log('useEffect', isMovie, id);
     getVideos();
   }, [isMovie, id]);
 

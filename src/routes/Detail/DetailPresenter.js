@@ -6,6 +6,7 @@ import Loader from 'components/Loader';
 import Message from 'components/Message';
 import Tabs from 'components/Tabs';
 import Videos from 'components/Videos';
+import Reviews from 'components/Reviews';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -68,8 +69,13 @@ const ImdbLink = styled.a`
   color: #121212;
 `;
 
-const DetailPresenter = ({ result, error, loading }) =>
-  loading ? (
+const DetailPresenter = ({ result, error, loading }) => {
+  // const tabItems = [
+  //   { title: 'Videos', path: '/video', component: Videos, props: { isMovie: true, id: result.id } },
+  //   { title: 'Reviews', path: '/reviews', component: Videos, props: { isMovie: true, id: result.id } }
+  // ];
+
+  return loading ? (
     <>
       <Helmet>
         <title>Loading | Nomflix</title>
@@ -111,15 +117,19 @@ const DetailPresenter = ({ result, error, loading }) =>
             </ItemContainer>
             <Overview>{result.overview}</Overview>
           </div>
-          <div style={{ height: '50%' }}>
+          <div style={{ height: '50%', marginLeft: '10px' }}>
             <Tabs
-              items={[{ title: 'Videos', path: '/video', component: Videos, props: { isMovie: true, id: result.id } }]}
+              items={[
+                { title: 'Videos', path: '/video', component: Videos, props: { isMovie: true, id: result.id } },
+                { title: 'Reviews', path: '/reviews', component: Reviews, props: { isMovie: true, id: result.id } }
+              ]}
             />
           </div>
         </Data>
       </Content>
     </Container>
   );
+};
 
 DetailPresenter.propTypes = {
   result: PropTypes.object,
