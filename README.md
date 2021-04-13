@@ -17,6 +17,7 @@ npm run start
 ```
 
 ## Screens
+
 - [x] Home
 - [x] TV Shows
   - 목록
@@ -24,8 +25,9 @@ npm run start
   - 영화, TV Show 검색
 - [x] Detail
   - 영화, TV Show의 상세 정보
-  
+
 ## API Verbs
+
 - [x] Now Playing (Movies)
 - [x] Upcoming (Movies)
 - [x] Airing Today (TV)
@@ -35,5 +37,14 @@ npm run start
 - [x] Movie Detail
 - [x] Search (TV, Movies)
 
+## Code Challenges
+
+- [ ] IMDB Link
+- [ ] Tabs inside of Movie / Show Details (Youtube Videos, Production Company, Countries)
+- [ ] Collections Link
+- [ ] /collections Route
+- [ ] On TV Show, show seasons and creators => TV Show Detail...
+
 ## Link
+
 - [초보를 위한 React JS (중급)](https://nomadcoders.co/react-for-beginners/lobby)

@@ -8,6 +8,7 @@ const STabs = styled.ul`
   height: 40px;
   display: flex;
   align-items: center;
+  padding-left: 10px;
 `;
 const Tab = styled.li`
   width: 120px;
@@ -26,6 +27,8 @@ const Title = styled.div`
 const TabContent = styled.div`
   height: calc(100% - 60px);
   padding: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
 `;
 
 class Tabs extends Component {
@@ -39,7 +42,9 @@ class Tabs extends Component {
   render() {
     const { items } = this.props;
     const { activeIndex } = this.state;
-    const ActiveComponent = items[activeIndex].component;
+    const activeItem = items[activeIndex];
+    const ActiveComponent = activeItem.component;
+    const activeProps = activeItem.props;
 
     return (
       <>
@@ -51,7 +56,7 @@ class Tabs extends Component {
           ))}
         </STabs>
         <TabContent>
-          <ActiveComponent />
+          <ActiveComponent {...activeProps} />
         </TabContent>
       </>
     );

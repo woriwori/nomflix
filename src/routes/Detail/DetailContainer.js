@@ -2,7 +2,7 @@ import React from 'react';
 import DetailPresenter from './DetailPresenter';
 import { moviesApi, tvApi } from 'api';
 
-export default class extends React.Component {
+export default class DetailContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,6 +16,7 @@ export default class extends React.Component {
       isMovie: pathname.includes('/movie/')
     };
   }
+
   async componentDidMount() {
     const {
       match: {
@@ -41,6 +42,7 @@ export default class extends React.Component {
       console.log(result);
     }
   }
+
   render() {
     const { result, error, loading } = this.state;
     return <DetailPresenter result={result} error={error} loading={loading} />;
