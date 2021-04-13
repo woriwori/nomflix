@@ -1,5 +1,7 @@
 # Nomflix
 
+Try it on [netlify](https://affectionate-montalcini-b21f4c.netlify.app/#/)
+
 ## Setup
 
 ```sh
