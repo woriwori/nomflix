@@ -39,11 +39,11 @@ npm run start
 
 ## Code Challenges
 
-- [ ] IMDB Link
-- [ ] Tabs inside of Movie / Show Details (Youtube Videos, Production Company, Countries)
-- [ ] Collections Link
-- [ ] /collections Route
-- [ ] On TV Show, show seasons and creators => TV Show Detail...
+- [x] IMDB Link
+- [x] Tabs inside of Movie / Show Details (Youtube Videos, Production Company, Countries)
+- [x] Collections Link
+- [x] /collections Route
+- [x] On TV Show, show seasons and creators => TV Show Detail...
 
 ## Link
 

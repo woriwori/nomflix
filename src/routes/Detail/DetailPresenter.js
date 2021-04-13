@@ -10,6 +10,7 @@ import Videos from 'components/Videos';
 import Reviews from 'components/Reviews';
 import Company from 'components/Company';
 import CreatedBy from 'components/CreatedBy';
+import Seasons from 'components/Seasons';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -93,7 +94,7 @@ const DetailPresenter = ({ result, error, loading, isMovie }) => {
       ];
     } else {
       return [
-        { title: 'Seasons', component: Company, props: { companies: result.seasons } },
+        { title: 'Seasons', component: Seasons, props: { seasons: result.seasons } },
         { title: 'Created By', component: CreatedBy, props: { createdBy: result.created_by } },
         { title: 'Company', component: Company, props: { companies: result.production_companies } }
       ];
