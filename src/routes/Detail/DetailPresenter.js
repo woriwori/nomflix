@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import Loader from 'components/Loader';
 import Message from 'components/Message';
+import Tabs from 'components/Tabs';
+import Videos from 'components/Videos';
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -59,6 +61,12 @@ const Overview = styled.p`
   line-height: 1.5;
   width: 50%;
 `;
+const ImdbLink = styled.a`
+  background-color: #f5c518;
+  padding: 2px 4px;
+  border-radius: 6px;
+  color: #121212;
+`;
 
 const DetailPresenter = ({ result, error, loading }) =>
   loading ? (
@@ -79,22 +87,53 @@ const DetailPresenter = ({ result, error, loading }) =>
       <Content>
         <Cover bgImage={`https://image.tmdb.org/t/p/original${result.poster_path}`} />
         <Data>
-          <Title>{result.original_title ? result.original_title : result.original_name}</Title>
-          <ItemContainer>
-            <Item>
-              {result.release_date ? result.release_date.substring(0, 4) : result.first_air_date.substring(0, 4)}
-            </Item>
-            <Divider>·</Divider>
-            <Item>
-              {result.genres &&
-                result.genres.map((genre, index) =>
-                  index === result.genres.length - 1 ? genre.name : `${genre.name} / `
-                )}
-            </Item>
-            <Divider>·</Divider>
-            <Item>{result.runtime ? result.runtime : result.episode_run_time[0]}</Item>
-          </ItemContainer>
-          <Overview>{result.overview}</Overview>
+          <div style={{ height: '50%' }}>
+            <Title>{result.original_title ? result.original_title : result.original_name}</Title>
+            <ItemContainer>
+              <Item>
+                {result.release_date ? result.release_date.substring(0, 4) : result.first_air_date.substring(0, 4)}
+              </Item>
+              <Divider>·</Divider>
+              <Item>
+                {result.genres &&
+                  result.genres.map((genre, index) =>
+                    index === result.genres.length - 1 ? genre.name : `${genre.name} / `
+                  )}
+              </Item>
+              <Divider>·</Divider>
+              <Item>{result.runtime ? result.runtime : result.episode_run_time[0]}</Item>
+              <Divider>·</Divider>
+              <Item>
+                <ImdbLink href={`https://www.imdb.com/title/${result.imdb_id}`} target="_blank">
+                  IMDB
+                </ImdbLink>
+              </Item>
+            </ItemContainer>
+            <Overview>{result.overview}</Overview>
+          </div>
+          <div style={{ height: '50%' }}>
+            <Tabs items={[{ title: 'Videos', path: '/video', component: Videos }]}>
+              {/*
+              https://www.youtube.com/watch?v=SUXWAEX2jlg 
+              /movie/{movie_id}/videos
+              {
+                "id": 550,
+                "results": [
+                  {
+                    "id": "533ec654c3a36854480003eb",
+                    "iso_639_1": "en",
+                    "iso_3166_1": "US",
+                    "key": "SUXWAEX2jlg",
+                    "name": "Trailer 1",
+                    "site": "YouTube",
+                    "size": 720,
+                    "type": "Trailer"
+                  }
+                ]
+              }
+              */}
+            </Tabs>
+          </div>
         </Data>
       </Content>
     </Container>
