@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
@@ -69,6 +70,12 @@ const ImdbLink = styled.a`
   border-radius: 6px;
   color: #121212;
 `;
+const SLink = styled.a`
+  text-decoration: underline;
+  margin-top: 7px;
+  display: block;
+  color: rgb(27 162 204);
+`;
 
 const DetailPresenter = ({ result, error, loading }) => {
   // const tabItems = [
@@ -117,6 +124,7 @@ const DetailPresenter = ({ result, error, loading }) => {
               </Item>
             </ItemContainer>
             <Overview>{result.overview}</Overview>
+            <SLink to={`/movie/${result.id}/collection`}> See Other Collection..</SLink>
           </div>
           <div style={{ height: '50%', marginLeft: '10px' }}>
             <Tabs

@@ -8,6 +8,10 @@ const api = axios.create({
   }
 });
 
+export const commonApi = {
+  collection: (id) => api.get(`collection/${id}`)
+};
+
 export const moviesApi = {
   nowPlaying: () => api.get('movie/now_playing'),
   upcoming: () => api.get('movie/upcoming'),
