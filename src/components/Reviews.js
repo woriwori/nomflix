@@ -91,20 +91,21 @@ const Reviews = ({ isMovie, id }) => {
     <Loader />
   ) : (
     <Container>
-      {reviews.length &&
-        reviews.map((review) => (
-          <ReviewContainer>
-            <UserContainer>
-              <UserAvatar src={`${avatarUrl}${review.author_details.avatar_path}`} alt={review.author_details.name} />
-              <UserInfo>
-                <UserName>{review.author}</UserName>
-                <UserCreated>{getFormattedDate(review.created_at)}</UserCreated>
-              </UserInfo>
-              <Rating>🌟 {review.author_details.rating} / 10</Rating>
-            </UserContainer>
-            <Content>{review.content}</Content>
-          </ReviewContainer>
-        ))}
+      {reviews.length
+        ? reviews.map((review) => (
+            <ReviewContainer>
+              <UserContainer>
+                <UserAvatar src={`${avatarUrl}${review.author_details.avatar_path}`} alt={review.author_details.name} />
+                <UserInfo>
+                  <UserName>{review.author}</UserName>
+                  <UserCreated>{getFormattedDate(review.created_at)}</UserCreated>
+                </UserInfo>
+                <Rating>🌟 {review.author_details.rating} / 10</Rating>
+              </UserContainer>
+              <Content>{review.content}</Content>
+            </ReviewContainer>
+          ))
+        : 'Nothing Found.'}
     </Container>
   );
 };

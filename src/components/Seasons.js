@@ -54,19 +54,20 @@ const Reviews = ({ seasons }) => {
 
   return (
     <Container>
-      {seasons.length &&
-        seasons.map((season) => (
-          <SeasonContainer>
-            <Poster src={`${imgUrl}${season.poster_path}`} alt={season.name} />
-            <Info>
-              <TitleContainer>
-                <Title>{season.name}</Title>
-                <Date>{season.air_date}</Date>
-              </TitleContainer>
-              <Overview>{season.overview}</Overview>
-            </Info>
-          </SeasonContainer>
-        ))}
+      {seasons.length
+        ? seasons.map((season) => (
+            <SeasonContainer>
+              <Poster src={`${imgUrl}${season.poster_path}`} alt={season.name} />
+              <Info>
+                <TitleContainer>
+                  <Title>{season.name}</Title>
+                  <Date>{season.air_date}</Date>
+                </TitleContainer>
+                <Overview>{season.overview}</Overview>
+              </Info>
+            </SeasonContainer>
+          ))
+        : 'Nothing Found.'}
     </Container>
   );
 };

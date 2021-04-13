@@ -19,7 +19,7 @@ const Videos = ({ companies }) => {
 
   return (
     <Container>
-      {companies.length && companies.map(({ logo_path }) => <Logo src={`${logoUrl}${logo_path}`} />)}
+      {companies.length ? companies.map(({ logo_path }) => <Logo src={`${logoUrl}${logo_path}`} />) : 'Nothing Found.'}
     </Container>
   );
 };

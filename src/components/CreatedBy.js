@@ -39,15 +39,16 @@ const CreatedBy = ({ createdBy }) => {
 
   return (
     <Container>
-      {createdBy.length &&
-        createdBy.map(({ name, profile_path }) => (
-          <ItemContainer>
-            <Profile src={`${imgUrl}${profile_path}`} />
-            <NameContainer>
-              <Name>{name}</Name>
-            </NameContainer>
-          </ItemContainer>
-        ))}
+      {createdBy.length
+        ? createdBy.map(({ name, profile_path }) => (
+            <ItemContainer>
+              <Profile src={`${imgUrl}${profile_path}`} />
+              <NameContainer>
+                <Name>{name}</Name>
+              </NameContainer>
+            </ItemContainer>
+          ))
+        : 'Nothing Found.'}
     </Container>
   );
 };

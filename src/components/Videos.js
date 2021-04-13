@@ -41,12 +41,13 @@ const Videos = ({ isMovie, id }) => {
     <Loader />
   ) : (
     <Container>
-      {videos.length &&
-        videos.map((video, index) => (
-          <YTContainer key={index}>
-            <YouTube videoId={video.key} opts={ytOptions} />
-          </YTContainer>
-        ))}
+      {videos.length
+        ? videos.map((video, index) => (
+            <YTContainer key={index}>
+              <YouTube videoId={video.key} opts={ytOptions} />
+            </YTContainer>
+          ))
+        : 'Nothing Found.'}
     </Container>
   );
 };
