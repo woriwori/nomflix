@@ -1,5 +1,4 @@
-import { clearConfigCache } from 'prettier';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const STabs = styled.ul`
@@ -8,14 +7,15 @@ const STabs = styled.ul`
   height: 40px;
   display: flex;
   align-items: center;
-  padding-left: 10px;
 `;
 const Tab = styled.li`
   width: 120px;
   height: 40px;
   text-align: center;
-  border-bottom: 3px solid ${(props) => (props.current ? '#3498db' : 'transparent')};
+  background-color: ${(props) => (props.current ? 'rgb(255, 255, 255, 0.1)' : 'transparent')};
   transition: border-bottom 0.5s ease-in-out;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
 `;
 const Title = styled.div`
   font-size: 15px;
@@ -25,42 +25,41 @@ const Title = styled.div`
   justify-content: center;
 `;
 const TabContent = styled.div`
-  height: calc(100% - 60px);
+  height: calc(100% - 40px);
   padding: 10px;
   overflow: scroll;
   overflow-x: hidden;
+  background-color: rgb(255, 255, 255, 0.1);
+  &::-webkit-scrollbar {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
 `;
 
-class Tabs extends Component {
-  constructor(props) {
-    super();
-    this.state = {
-      activeIndex: 0
-    };
-  }
+const Tabs = ({ items }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  render() {
-    const { items } = this.props;
-    const { activeIndex } = this.state;
-    const activeItem = items[activeIndex];
-    const ActiveComponent = activeItem.component;
-    const activeProps = activeItem.props;
+  const activeItem = items[activeIndex];
+  const ActiveComponent = activeItem.component;
+  const activeProps = activeItem.props;
 
-    return (
-      <>
-        <STabs>
-          {items.map((item, index) => (
-            <Tab current={activeIndex === index} key={index}>
-              <Title>{item.title}</Title>
-            </Tab>
-          ))}
-        </STabs>
-        <TabContent>
-          <ActiveComponent {...activeProps} />
-        </TabContent>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <STabs>
+        {items.map((item, index) => (
+          <Tab current={activeIndex === index} key={index} onClick={() => setActiveIndex(index)}>
+            <Title>{item.title}</Title>
+          </Tab>
+        ))}
+      </STabs>
+      <TabContent>
+        <ActiveComponent {...activeProps} />
+      </TabContent>
+    </>
+  );
+};
 
 export default Tabs;
